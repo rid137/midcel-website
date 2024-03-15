@@ -11,15 +11,15 @@ const TalkToUs = () => {
             }}>
             
             <div className="flex flex-col md:flex-row items-center justify-center gap-6 w-full text-[#ccc] h-ful">
-                <div className="w-full md:w-2/3 uppercase">
-                    <p>Are you ready for a better services?</p>
-                    <p className="text-[1.3rem] text-white text-justify">
+                <div className="w-full md:w-2/3 uppercase flex flex-col items-center md:items-start">
+                    <p className='mb-4 sm:text-normal text-[.8rem]'>Are you ready for a better services?</p>
+                    <p className="sm:text-[1.3rem] text-white text-justify  text-normal">
                         We’ve excelled our experience in awide range of industries to bring valuable insights and provide our customers with the truly beneficial solutions.
                     </p>
                 </div>
 
-                <div className="w-full md:w-1/3">
-                    <CustomButton cls='bg-white w-[50%] text-primary py-1 '>Talk to us</CustomButton>
+                <div className="w-full md:w-1/3 flex__center">
+                    <CustomButton cls='bg-white w-[15rem] md:w-[50%] text-primary py-1 '>Talk to us</CustomButton>
                 </div>
             </div>
 

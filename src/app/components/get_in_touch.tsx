@@ -1,11 +1,10 @@
 import CustomButton from '@/utils/customButton'
-import React from 'react'
 
 const GetInTouch = () => {
   return (
-    <section className="md:px-20 lg:px-32 px-[1.25rem] my-16">
+    <section className="md:px-20 lg:px-48 px-[1.25rem] my-16">
                 <div className="p- text-center flex-co flex__column tracking-widest leading-relaxed mb-16">
-                    <h4 className="text-primary">Contact US</h4>
+                    <h4 className="text-primary mb-3">Contact US</h4>
                     <h2 className="font-bold text-[1.3rem] md:text-[2.3rem]">Get in touch <br /> We’ll help your <span className="text-primary">IT solution</span></h2>
                 </div>
 
@@ -34,7 +33,7 @@ const GetInTouch = () => {
 
                     </div>
                 </form>
-                <p className="text-center mt-4">By submitting this message you consent to receiving emails from MidCel Software's</p>
+                <p className="text-center mt-4 text-[.8rem] sm:text-normal">By submitting this message you consent to receiving emails from MidCel Software's</p>
             </section>
   )
 }

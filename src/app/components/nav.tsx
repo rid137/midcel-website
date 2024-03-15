@@ -44,7 +44,7 @@ const Navbar = ({isNavOpen, setIsNavOpen}: NavbarProp) => {
 
     return (
         <div className="">
-            <div className="flex items-center justify-between common__padding h-[5rem]">
+            <div className="flex items-center justify-between common__padding h-[4rem] lg:h-[5rem]">
                 <Logo />
 
                 {/* DESKTOP NAV */}
@@ -72,7 +72,7 @@ const Navbar = ({isNavOpen, setIsNavOpen}: NavbarProp) => {
             </div>
 
             {/* MOBILE NAV */}
-            <div className={`${ isNavOpen ? "w-screen h-[calc(100vh-5rem)] flex flex-col items-center pt-20 gap-5 " : " hidden " } `}>
+            <div className={`${ isNavOpen ? "w-screen h-[calc(100vh-4rem)] flex flex-col items-center pt-20 gap-5 " : " hidden " } `}>
                 {/* <li className="rounded-md p-3 hover:bg-primary text-white">
 
                 </li> */}

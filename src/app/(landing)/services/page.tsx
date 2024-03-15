@@ -20,7 +20,7 @@ const Services = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full md:px-20 lg:px-24 px-[1.25rem] mb-8">
             {
                 serviceData?.map(({id, img, title}) => (
-                    <div key={id} className="bg-greyBg rounded-md flex__colum relative p-6 gap-6 cursor-default">
+                    <div key={id} className="bg-greyBg rounded-md flex__colum  flex flex-col items-center md:items-start relative p-6 gap-6 cursor-default">
                         {/* <div className="absolute top-4 left-4 text-primary font-bold">0{id}.</div> */}
                         
                         <img src={img} alt="service image" className='size-16 mb-4' />

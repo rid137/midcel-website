@@ -3,7 +3,7 @@ import Link from "next/link"
 
 const AboutUs = () => {
     return (
-        <div className="flex flex-col-reverse md:flex-row items-center justify-center gap-10 w-full common__padding py-8">
+        <div className="flex flex-col-reverse md:flex-row items-center justify-center gap-10 w-full common__padding my-12">
                 <div className="flex flex-col gap-2 w-full md:w-1/2">
                     <img src="/images/aboutMid1.jpg" className="w-full h-[10rem] md:h-[17rem]" alt="" />
 

@@ -34,7 +34,7 @@ const BlogDetails = ({ params }: { params: { id: string } }) => {
             </div>
 
             <div className="w-full my-6">
-                <img src={findBlog?.blogImg} alt="blog image" className="w-[50rem] h-[20rem] mx-auto" />
+                <img src={findBlog?.blogImg} alt="blog image" className="w-[50rem] h-[15rem] md:h-[22rem] mx-auto" />
             </div>
 
             <p className="text-justify leading-loose tracking-wider md:px-[5rem] lg:px-[10rem]">{findBlog?.message}</p>

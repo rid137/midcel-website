@@ -18,7 +18,7 @@ const HomePage = () => {
         // >
         <>
             {/* <div className="flex-col w-full fle items-center h-[15rem] sm:h-[25rem]" */}
-            <div className={`flex-col w-full fle items-center h-[calc(100vh-5rem)]`}
+            <div className={`flex-col w-full fle items-center h-[calc(100vh-4rem)] lg:h-[calc(100vh-5rem)]`}
             style={{
             background: `
             
@@ -42,7 +42,7 @@ const HomePage = () => {
 
                     {
                         offerData?.map((item) => (
-                            <div key={item?.id} className="py-6 px-4 bg-[#D9D9D9] w-[rem] rounded-lg md:rounded-none flex__column hover:bg-primary cursor-default hover:scale-[1.05] transition-all group">
+                            <div key={item?.id} className="py-8 px-4 bg-[#D9D9D9] w-[rem] rounded-lg md:rounded-none flex__column hover:bg-primary cursor-default hover:scale-[1.05] transition-all group">
                                 <div className="bg-white rounded-full w-[rem] p-6 flex__center">
                                     <img src={item?.img} className="size-16" alt="" />
                                 </div>
@@ -58,12 +58,12 @@ const HomePage = () => {
                 </div>
             </section>
 
-            <section className="common__padin md:px-20 lg:px-32 px-[1.25rem] py-[2rem]">
+            <section className="common__padin md:px-20 lg:px-40 px-[1.25rem] py-[2rem]">
                 <h3 className="text-center text-[.9rem] md:text-normal">WE CREATE BEAUTIFUL THINGS</h3>
 
                 <h2 className="text-primary text-center font-bold text-[1.5rem] md:text-[2rem] my-4">Our Previous Works</h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
                 {
                     previousWorkData?.map(({id, img}) => (
                         <div key={id} className="w-full">
@@ -73,7 +73,7 @@ const HomePage = () => {
                 }
                 </div>
 
-                <div className="items__center"><CustomButton cls="uppercase btnSm mt-4 ">Get Started</CustomButton></div>
+                <div className="flex__center"><CustomButton cls="uppercase btnSm mt-8 mb-4">see all portfolio</CustomButton></div>
 
             </section>
 

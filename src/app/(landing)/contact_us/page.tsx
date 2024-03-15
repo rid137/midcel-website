@@ -94,7 +94,7 @@ const ContactUs = () => {
                     <h2 className="font-bold text-[1.3rem] md:text-[2.3rem]">Get in touch <br /> We’ll help your <span className="text-primary">IT solution</span></h2>
                 </div>
 
-                <p className="px-16 text-center mb-6">Ready to take your software development to the next level? We're here to help! Whether you have questions or are ready to kickstart your next project, don't hesitate to reach out. Contact us today to discover how our innovative solutions can transform your business. Reach us directly using the information provided below. We can't wait to collaborate with you and bring your vision to life!</p>
+                <p className="md:px-16 px- text-center mb-6">Ready to take your software development to the next level? We're here to help! Whether you have questions or are ready to kickstart your next project, don't hesitate to reach out. Contact us today to discover how our innovative solutions can transform your business. Reach us directly using the information provided below. We can't wait to collaborate with you and bring your vision to life!</p>
                 <div className="text-center mb-6">
                 <p>Email Address: support@agencyname.com</p>
                 <p>Phone Number: +1 (555) 123-4567</p>

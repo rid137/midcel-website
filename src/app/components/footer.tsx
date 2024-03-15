@@ -25,7 +25,7 @@ const Footer = () => {
                                 ))
                             }
                         </ul>
-                        <h2 className="font-bold text-[1.5rem] sm:text-[2rem] md:text-[2.3rem] mb-10 mt-4 px-[1.25rem]">Start your next project with us</h2>
+                        <h2 className="font-bold text-[1.2rem] sm:text-[2rem] md:text-[2.3rem] mb-10 mt-4 px-[1.25rem]">Start your next project with us</h2>
                         <CustomButton cls="uppercase btnSm">Get Started</CustomButton>
                     </div>
 
