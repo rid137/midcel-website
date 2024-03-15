@@ -3,19 +3,26 @@ import React from 'react'
 
 const GetInTouch = () => {
   return (
-    <section className="md:px-20 lg:px-32 px-[1.25rem] mt-16">
+    <section className="md:px-20 lg:px-32 px-[1.25rem] my-16">
                 <div className="p- text-center flex-co flex__column tracking-widest leading-relaxed mb-16">
                     <h4 className="text-primary">Contact US</h4>
                     <h2 className="font-bold text-[1.3rem] md:text-[2.3rem]">Get in touch <br /> We’ll help your <span className="text-primary">IT solution</span></h2>
                 </div>
 
                 <form action="">
-                    <div className="flex flex-col md:flex-row items-center justify-center gap-[1.2rem] w-full mb-16">
+                    <div className="flex flex-col md:flex-row items-center justify-center gap-[1.2rem] w-full ">
                         <div className="w-full md:w-1/2 flex__column gap-3">
-                            <input type="text" placeholder="First Name" className="p-4 bg-greyBg rounded-md w-full focus:outline-primary" />
-                            <input type="text" placeholder="Last Name" className="p-4 bg-greyBg rounded-md w-full focus:outline-primary" />
+                            <input type="text" placeholder="Full Name" className="p-4 bg-greyBg rounded-md w-full focus:outline-primary" />
                             <input type="text" placeholder="Email Address" className="p-4 bg-greyBg rounded-md w-full focus:outline-primary" />
-                            <input type="text" placeholder="Phone No" className="p-4 bg-greyBg rounded-md w-full focus:outline-primary" />
+                            <input type="text" placeholder="Phone Number (WhatsApp Num)" className="p-5 bg-greyBg rounded-md w-full focus:outline-primary" />
+                            {/* <input type="select" placeholder="Phone No" className="p-4 bg-greyBg rounded-md w-full focus:outline-primary" /> */}
+                            
+                            <select id="creditConsultMethod" className="p-4 bg-greyBg rounded-md w-full focus:outline-primary" >
+                                <option value="">Choose your budget</option>
+                                <option value="">Item 1</option>
+                                <option value="">Item 2</option>
+                            </select>
+                           
 
 
                         </div>
@@ -27,6 +34,7 @@ const GetInTouch = () => {
 
                     </div>
                 </form>
+                <p className="text-center mt-4">By submitting this message you consent to receiving emails from MidCel Software's</p>
             </section>
   )
 }

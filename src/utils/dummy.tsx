@@ -227,47 +227,47 @@ export const renderSocials = [
 export const serviceData = [
     {
         id: 1,
-        img: "/images/service1.png",
+        img: "/images/service_1.png",
         title: "IT Consulting"
     },
     {
         id: 2,
-        img: "/images/service2.png",
+        img: "/images/service_2.png",
         title: "Custom Web Apps"
     },
     {
         id: 3,
-        img: "/images/service3.png",
+        img: "/images/service_3.png",
         title: "Native Android Apps"
     },
     {
         id: 4,
-        img: "/images/service4.png",
+        img: "/images/service_4.png",
         title: "iOs Development"
     },
     {
         id: 5,
-        img: "/images/service5.png",
+        img: "/images/service_5.png",
         title: "Backend Apps"
     },
     {
         id: 6,
-        img: "/images/service6.png",
+        img: "/images/service_6.png",
         title: "Infrastructure Services"
     },
     {
         id: 7,
-        img: "/images/service7.png",
+        img: "/images/service_7.png",
         title: "UI/UX Design"
     },
     {
         id: 8,
-        img: "/images/service8.png",
+        img: "/images/service_8.png",
         title: "Testing and QA"
     },
     {
         id: 9,
-        img: "/images/service9.png",
+        img: "/images/service_9.png",
         title: "Cyber Security"
     },
 ]

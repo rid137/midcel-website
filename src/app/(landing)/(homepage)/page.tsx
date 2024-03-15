@@ -1,7 +1,5 @@
 import CustomButton from "@/utils/customButton"
-import homeHero from "../../asset/homeHero.jpg"
-import { latestBlogData, offerData, previousWorkData, renderSocials } from "@/utils/dummy"
-import Logo from "@/app/components/logo"
+import { latestBlogData, offerData, previousWorkData } from "@/utils/dummy"
 import AboutUs from "@/app/components/aboutUs"
 import Statistics from "@/app/components/statistics"
 import GetInTouch from "@/app/components/get_in_touch"
@@ -19,7 +17,8 @@ const HomePage = () => {
         //     }}
         // >
         <>
-            <div className="flex-col w-full fle items-center h-[15rem] sm:h-[25rem]"
+            {/* <div className="flex-col w-full fle items-center h-[15rem] sm:h-[25rem]" */}
+            <div className={`flex-col w-full fle items-center h-[calc(100vh-5rem)]`}
             style={{
             background: `
             
@@ -27,9 +26,9 @@ const HomePage = () => {
             `,
             }}>
 
-                <div className="p-8 md:p-16 text-center flex-co flex__column tracking-widest leading-relaxed text-white h-full">
-                    <h4 className="sm:text-[1.7rem] text-normal">Top Software Company</h4>
-                    <h2 className="font-bold text-[1.4rem] sm:text-[2.3rem]">Innovate Solutions <br /> Tailored to Your Request</h2>
+                <div className="p-8 md:p-16 text-center flex-co flex__column gap-4 md:gap-10 tracking-widest leading-relaxed text-white h-full">
+                    <h4 className="sm:text-[2rem] md:text-[2.5rem] text-[1.5rem]">Top Software Company</h4>
+                    <h2 className="font-bold text-[1.8rem] sm:text-[3rem] md:text-[3.5rem]">Innovate Solutions <br /> Tailored to Your Request</h2>
                 </div>
 
             </div>
@@ -43,7 +42,7 @@ const HomePage = () => {
 
                     {
                         offerData?.map((item) => (
-                            <div key={item?.id} className="py-6 px-4 bg-[#D9D9D9] w-[rem] rounded-lg md:rounded-none flex__column hover:bg-primary cursor-default hover:scale-[] transition-all group">
+                            <div key={item?.id} className="py-6 px-4 bg-[#D9D9D9] w-[rem] rounded-lg md:rounded-none flex__column hover:bg-primary cursor-default hover:scale-[1.05] transition-all group">
                                 <div className="bg-white rounded-full w-[rem] p-6 flex__center">
                                     <img src={item?.img} className="size-16" alt="" />
                                 </div>
@@ -74,15 +73,17 @@ const HomePage = () => {
                 }
                 </div>
 
+                <div className="items__center"><CustomButton cls="uppercase btnSm mt-4 ">Get Started</CustomButton></div>
+
             </section>
 
             <Statistics />
 
             <GetInTouch />
             
-            <div className="w-full h-[25rem] rounded-xl my-7 px-[1.25rem] md:px-44">
+            {/* <div className="w-full h-[25rem] rounded-xl my-7 px-[1.25rem] md:px-44">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7911.858204434661!2d3.9110422477126914!3d7.473081694938539!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1039ed253f7bd9d7%3A0x4b62cb979ad439ab!2sojoo%20Ibadan!5e0!3m2!1sen!2sng!4v1709360994841!5m2!1sen!2sng" className="w-full h-full" style={{border:0}}  loading="lazy" ></iframe>                    
-            </div>
+            </div> */}
 
             <section className="md:px-20 lg:px-32 px-[1.25rem] my-10">
                 <div className="p- text-center flex-co flex__column tracking-widest leading-relaxed mb-16">

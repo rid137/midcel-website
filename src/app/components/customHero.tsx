@@ -8,7 +8,7 @@ interface CustomHeroProp {
 const CustomHero = ({title, subTitle}: CustomHeroProp) => {
   return (
     <div>
-        <div className="flex-col w-full fle items-center h-[15rem] sm:h-[25rem]"
+        <div className="flex-col w-full fle items-center h-[35rem]"
             style={{
             background: `
             
