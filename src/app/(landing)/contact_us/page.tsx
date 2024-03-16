@@ -127,7 +127,7 @@ const ContactUs = () => {
 
                     </div>
                 </form>
-                <p className="text-center mt-4">By submitting this message you consent to receiving emails from MidCel Software's</p>
+                <p className="text-center mt-4 text-[.8rem] sm:text-normal">By submitting this message you consent to receiving emails from MidCel Software's</p>
             </section>
         </section>
     )
