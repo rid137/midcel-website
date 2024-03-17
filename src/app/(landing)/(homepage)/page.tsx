@@ -88,7 +88,7 @@ const HomePage = () => {
             <section className="md:px-20 lg:px-32 px-[1.25rem] my-10">
                 <div className="p- text-center flex-co flex__column tracking-widest leading-relaxed mb-16">
                     <h4 className="text-[.8rem] sm:text-normal">Blog</h4>
-                    <h2 className="font-bold text-normal sm:text-[1.3rem] md:text-[2.3rem] text-primary">The latest on innovation <br />& industry trends</h2>
+                    <h2 className="font-bold text-[1.3rem] md:text-[2.3rem] text-primary">The latest on innovation <br />& industry trends</h2>
                 </div>
 
                 <div className="flex flex-col xl:flex-row items-center justify-center w-full gap-6 ">
