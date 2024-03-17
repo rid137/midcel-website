@@ -25,14 +25,14 @@ const AboutUs = () => {
                             Leverage on our 10+ years experience in technology, strategy, project creativity and our experts that are experienced in all aspect of product development to deliver any type of software ranging across all technologies for your startups, enterprise or organization. Whether you need to build a great product from scratch or just require an extra pair of hands, our rich pool of high-end developers are here to meet your request.
                         </p>
 
-                        <CustomButton cls="bg-primary text-white btnSm uppercase flex gap-3 items-center justify-center py-2 mt-6">
-                            <p><Link href="/company/team">Meet Our Team</Link></p>
+                        <Link href="/company/team" className="bg-primary text-white btnLg uppercase flex gap-3 items-center justify-center py-2 mt-6">
+                            <p>Meet Our Team</p>
 
                             <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M0.47644 15.1038L1.46532 16L8.49562 8.25894L1.46532 0.533334L0.47644 1.4295L6.70328 8.25894L0.47644 15.1038Z" fill="white"/>
                             </svg>
 
-                        </CustomButton>
+                        </Link>
                     </div>
                 </div>
             </div>

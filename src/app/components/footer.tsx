@@ -2,6 +2,7 @@ import CustomButton from '@/utils/customButton'
 import { renderSocials } from '@/utils/dummy'
 import React from 'react'
 import Logo from './logo'
+import Link from 'next/link'
 
 const Footer = () => {
   return (
@@ -26,7 +27,7 @@ const Footer = () => {
                             }
                         </ul>
                         <h2 className="font-bold text-[1.2rem] sm:text-[2rem] md:text-[2.3rem] mb-10 mt-4 px-[1.25rem]">Start your next project with us</h2>
-                        <CustomButton cls="uppercase btnSm">Get Started</CustomButton>
+                        <Link href="/contact_us"><CustomButton cls="uppercase btnMd">Get Started</CustomButton></Link>
                     </div>
 
                 </div>

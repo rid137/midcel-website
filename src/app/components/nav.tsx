@@ -48,7 +48,7 @@ const Navbar = ({isNavOpen, setIsNavOpen}: NavbarProp) => {
                 <Logo />
 
                 {/* DESKTOP NAV */}
-                <ul className='hidden lg:flex items-center justify-center gap-4 text-black font-[500] font-poppins '>
+                <ul className='hidden xl:flex items-center justify-center gap-4 text-black font-[500] font-poppins '>
                     <Link href="/" className={`${activePage === "home" && active}`}>Home</Link>
                     {
                         Links?.map((itemList) => (
@@ -63,16 +63,18 @@ const Navbar = ({isNavOpen, setIsNavOpen}: NavbarProp) => {
                         ))
                     }
 
-                    <CustomButton cls="bg-primary text-white btnSm">Let’s get started</CustomButton>
+                    {/* <CustomButton cls="bg-primary text-white btnMd">Let’s get started</CustomButton> */}
+                    <Link href="/contact_us"><CustomButton cls="bg-primary text-white btnMd">Let’s get started</CustomButton></Link>
+
                 </ul>
 
-                <div className="lg:hidden block text-xl cursor-pointer z-10 text-primary" onClick={() => setIsNavOpen(!isNavOpen)}>
+                <div className="xl:hidden block text-xl cursor-pointer z-10 text-primary" onClick={() => setIsNavOpen(!isNavOpen)}>
                     {isNavOpen ? <IoMdClose />  : <IoMdMenu /> }
                 </div>
             </div>
 
             {/* MOBILE NAV */}
-            <div className={`${ isNavOpen ? "w-screen h-[calc(100vh-4rem)] flex flex-col items-center pt-20 gap-5 " : " hidden " } `}>
+            <div className={`${ isNavOpen ? "w-screen h-[calc(100vh-4rem)] xl:h-[calc(100vh-5rem)] flex flex-col items-center pt-20 gap-5 " : " hidden " } `}>
                 {/* <li className="rounded-md p-3 hover:bg-primary text-white">
 
                 </li> */}

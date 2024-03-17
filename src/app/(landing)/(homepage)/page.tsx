@@ -73,7 +73,7 @@ const HomePage = () => {
                 }
                 </div>
 
-                <div className="flex__center"><CustomButton cls="uppercase btnSm mt-8 mb-4">see all portfolio</CustomButton></div>
+                <div className="flex__center"><CustomButton cls="uppercase btnLg mt-8 mb-4">see all portfolio</CustomButton></div>
 
             </section>
 

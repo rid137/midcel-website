@@ -19,7 +19,7 @@ const TalkToUs = () => {
                 </div>
 
                 <div className="w-full md:w-1/3 flex__center">
-                    <CustomButton cls='bg-white w-[15rem] md:w-[50%] text-primary py-1 '>Talk to us</CustomButton>
+                    <CustomButton cls='bg-white w-[15rem] md:w-[50%] text-primary py-2 '>Talk to us</CustomButton>
                 </div>
             </div>
 
