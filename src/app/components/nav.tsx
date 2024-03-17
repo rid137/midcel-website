@@ -82,7 +82,7 @@ const Navbar = ({isNavOpen, setIsNavOpen}: NavbarProp) => {
                 <Link onClick={handleMobileNavItemClick} href="/" className={`${activePage === "home" && active} hover:tracking-wider transition-all p-2 z-10`}>Home</Link>
                 {
                     Links?.map((itemList) => (
-                            <Link 
+                            <Link
                                 href={itemList?.href}
                                 key={itemList?.text}
                                 className={`${activePage === `${itemList.pageName}` ? `${active}` : ''} hover:tracking-wider transition-all p-2 z-10`}
@@ -94,7 +94,7 @@ const Navbar = ({isNavOpen, setIsNavOpen}: NavbarProp) => {
                     ))
                 }
 
-                <CustomButton cls="bg-primary text-white btnMd">Let’s get started</CustomButton>
+                <Link onClick={handleMobileNavItemClick} href="/contact_us"><CustomButton cls="bg-primary text-white btnMd">Let’s get started</CustomButton></Link>
 
             </div>
         </div>
