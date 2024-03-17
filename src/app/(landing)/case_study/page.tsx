@@ -19,7 +19,7 @@ const CaseStudy = () => {
             {
                 options?.map((option, index) => (
                     <div key={index} className="cursor-default p-2 md:py-3 md:px-4 bg-greyBg text-black rounded-md hover:bg-primary group">
-                        <p className="group-hover:text-white md:text-normal text-[.5rem] sm:text-[.8rem]">{option}</p>
+                        <p className="group-hover:text-white md:text-normal text-[.6rem] sm:text-[.8rem]">{option}</p>
                     </div>
                 ))
             }
