@@ -94,7 +94,7 @@ const Navbar = ({isNavOpen, setIsNavOpen}: NavbarProp) => {
                     ))
                 }
 
-                <CustomButton cls="bg-primary text-white btnSm">Let’s get started</CustomButton>
+                <CustomButton cls="bg-primary text-white btnMd">Let’s get started</CustomButton>
 
             </div>
         </div>
