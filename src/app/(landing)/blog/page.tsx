@@ -1,37 +1,60 @@
 "use client"
 import CustomHero from "@/app/components/customHero"
-import { latestBlogData } from "@/utils/dummy"
+import { BASE_URL } from "@/libs"
+import { BlogDataTypes } from "@/types"
+import Spinner from "@/utils/spinner"
+import { useQuery } from "@tanstack/react-query"
+import axios from "axios"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
-
 
 
 const Blog = () => {
-    const router = useRouter()
+
+    const fetchBlogs = async () => {
+        try {
+          const response = await axios.get(
+            `${BASE_URL}/blogpost`,
+          );
+          const blogData = response.data;
+
+          return blogData as BlogDataTypes[];
+        } catch (error) {
+            console.error('Error fetching blogs:', error);
+        }
+    };
+    
+    const { isLoading, isError, data: blogData } = useQuery({
+    queryKey: ['blogsData'],
+    queryFn: fetchBlogs,
+    })
+
+    
     return(
         <section>
             <CustomHero title="Blog" />
 
             <div className="common__padding">
-                <div className="flex items-center justify-center w-full flex-col lg:flex-row py-16 gap-10">
+                <div className="flex items-start justify-center w-full flex-col lg:flex-row py-12 lg:py-16 gap-10">
                     <div className="w-full lg:w-1/2 h-[20rem] sm:h-[23rem]">
-                        <img className="h-full w-full" src="/images/blog.jpg" alt="blog image" />
+                        <img className="h-full w-full" src={"/images/blog.jpg"} alt="blog image" />
                     </div>
 
                     <div className="w-full lg:w-1/2 h-[rem]">
-                        <p>11:49am . July 2, 2021</p>
-                        <p className="text-primary text-[1.2rem] my-4">Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor</p>
+                        <p> Mar 25, 2024, 12:20 PM</p>
+                        <p className="text-primary text-[1.2rem] my-4">Embracing Innovation: A CEO's Perspective on Driving Growth in the SaaS Industry</p>
                         <p className="text-justify leading-loose tracking-wider">
-                            Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. 
-                            Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum. 
-                            Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt qui esse pariatur 
-                            duis deserunt mollit dolore cillum minim tempor enim. Elit aute irure tempor cupidatat 
-                            incididunt sint deserunt ut voluptate aute id deserunt nisi.
+                            As the CEO of a leading SaaS firm, I've witnessed firsthand the transformative power 
+                            of innovation in driving growth and success in our industry. In today's rapidly 
+                            evolving landscape, staying ahead of the curve is not just advantageous—it's essential. 
+                            At our company, we've made innovation a cornerstone of our strategy, constantly pushing
+                            boundaries and exploring new possibilities to meet the ever-changing needs of our 
+                            customers.
                         </p>
 
                         <div className="flex items-center gap-4 mt-4 ">
                             <img className="size-16" src="/images/ceo.png" alt="ceo image" />
                             <div className="">
+                                {/* <p className="font-bold">{singleBlogData?.author_name}</p> */}
                                 <p className="font-bold">Oluwaferanmi Akinola</p>
                                 <p className='text-sm t opacity-'>CEO, Sale’s Noisemaker</p>
                             </div>
@@ -51,7 +74,7 @@ const Blog = () => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full my-8">
+                {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full my-8">
                     {
                         latestBlogData?.map((item) => (
                             <div key={item?.id} className="bg-greyBg w- flex__column h-[26rem] rounded-md">
@@ -63,12 +86,39 @@ const Blog = () => {
                                 <div className="p-6 h-1/2 w-full relative">
                                     <h3 className="font-bold text-normal sm:text-[1.2rem]">{item?.title}</h3>
                                     <Link href={`/blog/${item?.id}`} className="absolute bottom-4 hover:scale-105 transition-all">Read More {">>"}</Link>
-                                    {/* <button onClick={() => { router.push(`/blog/${item?.id}`) }}>Read</button> */}
                                 </div>
                             </div>
                         ))
                     }
+                </div> */}
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full my-8">
+
+                    {
+                        isLoading ? 
+                        <Spinner   />
+                        : 
+                        isError ?
+                        <p className="text-red-600">Error fetching blogs</p>
+                        : 
+                        blogData?.map((item) => (
+                            <div key={item?._id} className="bg-greyBg w- flex__column h-[26rem] rounded-md">
+                                <div className="w-full h-1/2">
+                                    {/* <img src={item?.image ? item?.image : "/images/latest1.jpg"} className="w-full h-full rounded-t-md" alt="blog image" /> */}
+                                    <img src={"/images/latest4.jpg"} className="w-full h-full rounded-t-md" alt="blog image" />
+
+                                </div>
+
+                                <div className="p-6 h-1/2 w-full relative">
+                                    <h3 className="font-bold text-normal sm:text-[1.2rem]">{item?.title}</h3>
+                                    <Link href={`/blog/${item?._id}`} className="absolute bottom-4 hover:scale-105 transition-all">Read More {">>"}</Link>
+                                </div>
+                            </div>
+                        ))
+                        
+                    }
                 </div>
+
                 
             </div>
         </section>

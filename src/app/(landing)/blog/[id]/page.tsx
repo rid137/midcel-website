@@ -1,48 +1,113 @@
-import { BlogDataType } from '@/types';
-import { latestBlogData } from '@/utils/dummy';
+"use client"
+
+import { BlogDataTypes } from '@/types';
 import Link from 'next/link';
 import React from 'react'
-import facebookBtn from "../../../../../public/icons/facebookBtn.svg"
+import axios from 'axios';
+import { BASE_URL } from '@/libs';
+import { useQuery } from '@tanstack/react-query';
+import { generateDateTime  } from '@/utils/helpers';
+import { usePathname } from 'next/navigation';
 
-// id: number;
-//     blogImg: string;
-//     title: string;
-//     message: string;
-//     writerInfo: {
-//         name: string;
-//         img: string;
-//         occupation: string;
+
 const BlogDetails = ({ params }: { params: { id: string } }) => {
     const { id } = params;
-    console.log(id)
+    const param = usePathname();
 
-    const findBlog = latestBlogData?.find((blog) => blog?.id == +id)
-    // const { title, blogImg, message, writerInfo   } = findBlog as BlogDataType
-    // console.log(findBlog)
+
+    const fetchSingleBlog = async () => {
+        try {
+          const response = await axios.get(
+            `${BASE_URL}/blogpost/${id}`,
+          );
+          const blogData = response.data;
+
+          return blogData as BlogDataTypes;
+        } catch (error) {
+            console.error('Error fetching blogs:', error);
+        }
+    };
+    
+    const { isLoading, isError, data: blogData } = useQuery({
+        queryKey: ['blogData'],
+        queryFn: fetchSingleBlog,
+    })
+
+    const fetchBlogs = async () => {
+        try {
+          const response = await axios.get(
+            `${BASE_URL}/blogpost`,
+          );
+          const blogData = response.data;
+
+          return blogData as BlogDataTypes[];
+        } catch (error) {
+            console.error('Error fetching blogs:', error);
+        }
+    };
+    
+    const {  data: allBlogsData } = useQuery({
+    queryKey: ['blogsData'],
+    queryFn: fetchBlogs,
+    })
+
+    // const paragraphs = blogData?.body.split('\n');
+
+    // const renderParagraph = paragraphs && paragraphs.map(paragraph => `<p>${paragraph}</p>`).join('');
+    
+
+    console.log("param", param)
+    const shareOnTwitter = () => {
+        const shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(`http://localhost:3000${param}`)}`;
+        window.open(shareUrl, '_blank');
+    };
+
+    const shareOnFacebook = () => {
+        const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`http://localhost:3000${param}`)}`;
+        window.open(shareUrl, '_blank');
+    };
+
+    const shareOnWhatsApp = () => {
+        const shareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(`http://localhost:3000${param}`)}`;
+        window.open(shareUrl, '_blank');
+    };
+
+    const shareOnLinkedIn = () => {
+        const shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`http://localhost:3000${param}`)}`;
+        window.open(shareUrl, '_blank');
+    };
+
+
   return (
     <section>
         <div className="flex__column gap- common__padding mt-8">
-            <p>11:49am . July 2, 2021</p>
-            <p className="text-primary text-center text-[1.2rem] my-4 font-bold md:w-[50%] mx-auto">{findBlog?.title}</p>
+            <p>{generateDateTime(blogData?.createdAt as string)}</p>
+            <p className="text-primary text-center text-[1.2rem] my-4 font-bold md:w-[50%] mx-auto">{blogData?.title}</p>
 
             <div className="flex items-center gap-4 mt-4 ">
-                <img className="size-16" src={findBlog?.writerInfo?.img} alt="ceo image" />
+                {/* <img className="size-16" src={blogData?.image ? blogData?.image : "/images/ceo.png" } alt="ceo image" /> */}
+                <img className="size-16" src={"/images/ceo.png" } alt="ceo image" />
                 <div className="">
-                    <p className="font-bold">{findBlog?.writerInfo?.name}</p>
-                    <p className='text-sm t opacity-'>{findBlog?.writerInfo?.occupation}</p>
+                    <p className="font-bold">{blogData?.author_name}</p>
+                    {/* <p className='text-sm t opacity-'>{blogData?.author_name}</p> */}
+                    <p className='text-sm t opacity-'>CEO, Sale’s Noisemaker</p>
                 </div>
             </div>
 
             <div className="w-full my-6">
-                <img src={findBlog?.blogImg} alt="blog image" className="w-[50rem] h-[15rem] md:h-[22rem] mx-auto" />
+                {/* <img src={blogData?.image ? blogData?.image : "/images/blog.jpg"} alt="blog image" className="w-[50rem] h-[15rem] md:h-[22rem] mx-auto" /> */}
+                <img src={"/images/latest4.jpg"} alt="blog image" className="w-[50rem] h-[15rem] md:h-[22rem] mx-auto" />
             </div>
 
-            <p className="text-justify leading-loose tracking-wider md:px-[5rem] lg:px-[10rem]">{findBlog?.message}</p>
+            <p className="text-justify leading-loose tracking-wider md:px-[5rem] lg:px-[10rem]">{blogData?.body}</p>
+            {/* <p className="text-justify leading-loose tracking-wider md:px-[5rem] lg:px-[10rem]">{renderParagraph}</p> */}
+            {/* {renderParagraph} */}
 
-            <p className="text-center font-bold mb-6">SHARE THIS POST</p>
+            <p className="text-center font-bold my-6">SHARE THIS POST</p>
 
             <div className="flex flex-co flex-row items-center justify-center px-[1.25rem] gap-3 md:gap-6 mb-16">
-                <svg className='cursor-pointer w-12 h-12 sm:w-20 sm:h-20 md:w-28 md:h-28'  viewBox="0 0 145 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {/* FACEBOOK */}
+                <svg onClick={shareOnFacebook} className='cursor-pointer w-12 h-12 sm:w-20 sm:h-20 md:w-28 md:h-28'  viewBox="0 0 145 46" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_739_1736)">
                     <rect width="143.53" height="45" transform="translate(0.530273 0.676392)" fill="#3B5998"/>
                     <rect width="98.53" height="45" transform="translate(45.5303 0.676392)" fill="url(#paint0_linear_739_1736)"/>
@@ -59,7 +124,8 @@ const BlogDetails = ({ params }: { params: { id: string } }) => {
                     </clipPath>
                     </defs>
                 </svg>
-                <svg className='cursor-pointer w-12 h-12 sm:w-16 sm:h-16 md:w-28 md:h-28' viewBox="0 0 122 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {/* TWITTER */}
+                <svg onClick={shareOnTwitter} className='cursor-pointer w-12 h-12 sm:w-16 sm:h-16 md:w-28 md:h-28' viewBox="0 0 122 46" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_739_1740)">
                     <rect width="121.56" height="45" transform="translate(0.0595703 0.676392)" fill="#1DA1F2"/>
                     <rect width="76.56" height="45" transform="translate(45.0596 0.676392)" fill="url(#paint0_linear_739_1740)"/>
@@ -76,8 +142,8 @@ const BlogDetails = ({ params }: { params: { id: string } }) => {
                     </clipPath>
                     </defs>
                 </svg>
-
-                <svg className='cursor-pointer w-12 h-12 sm:w-20 sm:h-20 md:w-28 md:h-28' viewBox="0 0 136 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {/* LINKEDIN */}
+                <svg onClick={shareOnLinkedIn} className='cursor-pointer w-12 h-12 sm:w-20 sm:h-20 md:w-28 md:h-28' viewBox="0 0 136 46" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_739_1744)">
                     <rect width="135.17" height="45" transform="translate(0.629883 0.676392)" fill="#0077B5"/>
                     <rect width="90.17" height="45" transform="translate(45.6299 0.676392)" fill="url(#paint0_linear_739_1744)"/>
@@ -94,8 +160,8 @@ const BlogDetails = ({ params }: { params: { id: string } }) => {
                     </clipPath>
                     </defs>
                 </svg>
-
-                <svg className='cursor-pointer w-12 h-12 sm:w-20 sm:h-20 md:w-28 md:h-28' viewBox="0 0 149 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {/* WHATSAPP */}
+                <svg onClick={shareOnWhatsApp} className='cursor-pointer w-12 h-12 sm:w-20 sm:h-20 md:w-28 md:h-28' viewBox="0 0 149 46" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_739_1748)">
                     <rect width="147.67" height="45" transform="translate(0.799805 0.676392)" fill="#25D366"/>
                     <rect width="102.67" height="45" transform="translate(45.7998 0.676392)" fill="url(#paint0_linear_739_1748)"/>
@@ -121,17 +187,18 @@ const BlogDetails = ({ params }: { params: { id: string } }) => {
             <div className="flex flex-col xl:flex-row items-center justify-center w-full gap-6 mb-6">
 
                 {
-                    latestBlogData?.slice(0, 3)?.map((item, index) => (
+                    allBlogsData?.slice(3)?.map((item, index) => (
                         <div key={index} className="bg-greyBg w-full xl:w-1/3 flex__column h-[30rem] rounded-md">
                             <div className="w-full h-1/2">
-                                <img src={item?.blogImg} className="w-full h-full rounded-t-md" alt="blog image" />
+                                {/* <img src={item?.image} className="w-full h-full rounded-t-md" alt="blog image" /> */}
+                                <img src={"/images/latest4.jpg"} className="w-full h-full rounded-t-md" alt="blog image" />
 
                             </div>
 
                             <div className="p-6 h-1/2 w-full relative">
                                 <h3 className="font-bold text-normal sm:text-[1.2rem]">{item?.title}</h3>
                                 {/* <button className="absolute bottom-4">Read More {">>"}</button> */}
-                                <Link href={`/blog/${item?.id}`} className="absolute bottom-4 hover:scale-105 transition-all">Read More {">>"}</Link>
+                                <Link href={`/blog/${item?._id}`} className="absolute bottom-4 hover:scale-105 transition-all">Read More {">>"}</Link>
 
                             </div>
                         </div>

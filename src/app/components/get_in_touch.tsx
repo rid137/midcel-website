@@ -1,4 +1,4 @@
-import CustomButton from '@/utils/customButton'
+// import CustomButton from '@/utils/customButton'
 
 const GetInTouch = () => {
   return (
@@ -13,7 +13,7 @@ const GetInTouch = () => {
                         <div className="w-full md:w-1/2 flex__column gap-3">
                             <input type="text" placeholder="Full Name" className="p-4 bg-greyBg rounded-md w-full focus:outline-primary" />
                             <input type="text" placeholder="Email Address" className="p-4 bg-greyBg rounded-md w-full focus:outline-primary" />
-                            <input type="text" placeholder="Phone Number (WhatsApp Num)" className="p-5 bg-greyBg rounded-md w-full focus:outline-primary" />
+                            <input type="text" placeholder="Phone Number (WhatsApp Num)" className="p-4 bg-greyBg rounded-md w-full focus:outline-primary" />
                             {/* <input type="select" placeholder="Phone No" className="p-4 bg-greyBg rounded-md w-full focus:outline-primary" /> */}
                             
                             <select id="creditConsultMethod" className="p-4 bg-greyBg rounded-md w-full focus:outline-primary" >
@@ -27,8 +27,9 @@ const GetInTouch = () => {
                         </div>
                         
                         <div className="w-full md:w-1/2 flex__column gap-4 md:gap-2">
-                            <textarea name="" id="" cols={30} rows={8} placeholder='Your message' className="resize-none bg-greyBg w-full p-4 focus:outline-primary" />
-                            <CustomButton cls=" w-full py-1 btnL bg-[#276AD9] text-white">send message now</CustomButton>
+                            <textarea name="" id="" cols={30} rows={8} placeholder='Your message' className="resize-none bg-greyBg w-full px-4 py-[11px] focus:outline-primary" />
+                            {/* <CustomButton cls=" w-full py-1 btnL bg-[#276AD9] text-white">send message now</CustomButton> */}
+                            <p className=" w-full py-1 btnL bg-[#276AD9] text-white block text-center cursor-pointer rounded-md font-inter hover:scale-95 transition-all">send message now</p>
                         </div>
 
                     </div>

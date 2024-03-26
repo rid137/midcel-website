@@ -1,29 +1,46 @@
-import CustomButton from "@/utils/customButton"
-import { latestBlogData, offerData, previousWorkData } from "@/utils/dummy"
+"use client"
+
+// import CustomButton from "@/utils/customButton"
+import { offerData, previousWorkData } from "@/utils/dummy"
 import AboutUs from "@/app/components/aboutUs"
 import Statistics from "@/app/components/statistics"
 import GetInTouch from "@/app/components/get_in_touch"
 import Link from "next/link"
+import { BASE_URL } from "@/libs"
+import axios from "axios"
+import { useQuery } from "@tanstack/react-query"
+import { BlogDataTypes } from "@/types"
+import Spinner from "../../../utils/spinner"
 
 const HomePage = () => {
+
+    const fetchBlogs = async () => {
+        try {
+          const response = await axios.get(
+            `${BASE_URL}/blogpost`,
+          );
+          const clientsData = response.data;
+       
+          return clientsData as BlogDataTypes[];
+        } catch (error) {
+            console.error('Error fetching blogs:', error);
+          }
+      };
+    
+      const { isLoading, isError, data: blogData } = useQuery({
+        queryKey: ['blogsData'],
+        queryFn: fetchBlogs,
+    })
+
+
     return(
-        // <div className="flex-co w-scree flex items-center justify-center h-[20rem] bg-cover bg-center "
-        //     style={{
-        //     background: `
-        //         linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        //         url(${homeHero}) center center no-repeat
-        //     `,
-        //     backgroundSize: 'cover',
-        //     }}
-        // >
         <>
-            {/* <div className="flex-col w-full fle items-center h-[15rem] sm:h-[25rem]" */}
             <div className={`flex-col w-full fle items-center h-[calc(100vh-4rem)] lg:h-[calc(100vh-5rem)]`}
-            style={{
-            background: `
-            
-                url("./images/homeHero.jpg") center center/cover no-repeat
-            `,
+                style={{
+                background: `
+                
+                    url("./images/homeHero.jpg") center center/cover no-repeat
+                `,
             }}>
 
                 <div className="p-8 md:p-16 text-center flex-co flex__column gap-4 md:gap-10 tracking-widest leading-relaxed text-white h-full">
@@ -73,7 +90,8 @@ const HomePage = () => {
                 }
                 </div>
 
-                <div className="flex__center"><CustomButton cls="uppercase btnLg mt-8 mb-4">see all portfolio</CustomButton></div>
+                {/* <div className="flex__center"><CustomButton cls="uppercase btnLg mt-8 mb-4">see all portfolio</CustomButton></div> */}
+                <div className="flex__center"><p className="uppercase btnLg mt-8 mb-4 text-center flex items-center justify-center">see all portfolio</p></div>
 
             </section>
 
@@ -91,7 +109,7 @@ const HomePage = () => {
                     <h2 className="font-bold text-[1.3rem] md:text-[2.3rem] text-primary">The latest on innovation <br />& industry trends</h2>
                 </div>
 
-                <div className="flex flex-col xl:flex-row items-center justify-center w-full gap-6 ">
+                {/* <div className="flex flex-col xl:flex-row items-center justify-center w-full gap-6 ">
 
                     {
                         latestBlogData?.slice(0, 3)?.map((item) => (
@@ -103,15 +121,40 @@ const HomePage = () => {
 
                                 <div className="p-6 h-1/2 w-full relative">
                                     <h3 className="font-bold text-normal sm:text-[1.2rem]">{item?.title}</h3>
-                                    {/* <button className="absolute bottom-4">Read More {">>"}</button> */}
                                     <Link href={`/blog/${item?.id}`} className="absolute bottom-4 hover:scale-105 transition-all">Read More {">>"}</Link>
 
                                 </div>
                             </div>
                         ))
                     }
-                </div>
+                </div> */}
 
+                <div className="flex flex-col xl:flex-row items-center justify-center w-full gap-6 mt-10">
+
+                    {
+                        isLoading ? 
+                        <Spinner   />
+                        : 
+                        isError ?
+                        <p className="text-red-600">Error fetching blogs</p>
+                        : 
+                        blogData?.slice(3)?.map((item) => (
+                            <div className="bg-greyBg w-full xl:w-1/3 flex__column h-[30rem] rounded-md">
+                                <div className="w-full h-1/2">
+                                    <img src="/images/latest4.jpg" className="w-full h-full rounded-t-md" alt="blog image" />
+
+                                </div>
+
+                                <div className="p-6 h-1/2 w-full relative">
+                                    <h3 className="font-bold text-normal sm:text-[1.2rem]">{item?.title}</h3>
+                                    {/* <button className="absolute bottom-4">Read More {">>"}</button> */}
+                                    <Link href={`/blog/${item?._id}`} className="absolute bottom-4 hover:scale-105 transition-all">Read More {">>"}</Link>
+
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
             </section>
 
             

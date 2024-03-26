@@ -1,6 +1,11 @@
 // "use client"
 import type { Metadata } from "next";
 import "./globals.css";
+// import { QueryClient, QueryClientProvider } from  "@tanstack/react-query";
+
+
+
+// const queryClient = new QueryClient();
 
 
 export const metadata: Metadata = {
@@ -18,9 +23,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-poppins">
+
         {/* <Navbar isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} /> */}
           {/* {!isNavOpen && children} */}
-        {children}
+          {/* <QueryClientProvider client={queryClient}> */}
+            {children}
+
+          {/* </QueryClientProvider> */}
+
         {/* <Template key={1}>{children}</Template> */}
 
         </body>

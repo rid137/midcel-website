@@ -4,6 +4,11 @@ import React, { useEffect, useState } from 'react'
 import Footer from '../components/footer';
 import Navbar from '../components/nav';
 import BackToTop from '../components/back_to_top';
+import { QueryClient, QueryClientProvider } from  "@tanstack/react-query";
+
+const queryClient = new QueryClient();
+
+
 
 const LandingLayout = ({
   children,
@@ -29,6 +34,8 @@ const LandingLayout = ({
 
   return (
     <div>
+        <QueryClientProvider client={queryClient}>
+
         <Navbar isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
         {!isNavOpen && children}
 
@@ -36,6 +43,7 @@ const LandingLayout = ({
         {/* <Footer /> */}
         {!isTopOfPage && <BackToTop />}
         {!isNavOpen && <Footer />}
+        </QueryClientProvider>
     </div>
   )
 }

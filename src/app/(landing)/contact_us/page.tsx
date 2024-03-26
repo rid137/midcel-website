@@ -1,8 +1,57 @@
+"use client"
+
 import CustomHero from "@/app/components/customHero"
+import { BASE_URL } from "@/libs"
 import CustomButton from "@/utils/customButton"
+import axios from "axios"
+import { FormEvent, useState } from "react"
 
 
 const ContactUs = () => {
+    const [fullName, setFullName] = useState<string>("")
+    const [email, setEmail] = useState<string>("")
+    const [phoneNumber, setPhoneNumber] = useState<string>("")
+    const [message, setMessage] = useState<string>("")
+    const [selectedBudget, setSelectedBudget] = useState<string>("")
+    const [loading, setLoading] = useState<boolean>(false)
+
+
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        setLoading(true);
+            
+        const dataSent = {
+            email,
+            message,
+            phoneNumber,
+            budget: selectedBudget,
+            fullname: fullName
+        };
+
+        // console.log("string Json",JSON.stringify(dataSent))
+
+        try {        
+            const response = await axios.post(`${BASE_URL}/contact`, JSON.stringify(dataSent), {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            
+            console.log("response", response.data);
+            
+            if (response.status === 200) {
+                console.log("response data", response.data);
+            } else {
+                // Handle error response
+            }
+        } catch (error: any) {
+            console.log(error);
+        }
+        setLoading(false);
+    };
+    
+
+
     return(
         <section className="">
             <CustomHero title="Contact Us" />
@@ -102,18 +151,39 @@ const ContactUs = () => {
                 <p>Business Hours: Monday-Sunday, 9:00 AM -5:00 PM </p>
 
                 </div>
-                <form action="">
+                <form onSubmit={handleSubmit}>
                     <div className="flex flex-col md:flex-row items-center justify-center gap-[1.2rem] w-full ">
                         <div className="w-full md:w-1/2 flex__column gap-3">
-                            <input type="text" placeholder="Full Name" className="p-4 bg-greyBg rounded-md w-full focus:outline-primary" />
-                            <input type="text" placeholder="Email Address" className="p-4 bg-greyBg rounded-md w-full focus:outline-primary" />
-                            <input type="text" placeholder="Phone Number (WhatsApp Num)" className="p-5 bg-greyBg rounded-md w-full focus:outline-primary" />
+                            <input 
+                                type="text" 
+                                placeholder="Full Name" 
+                                className="p-4 bg-greyBg rounded-md w-full focus:outline-primary" 
+                                value={fullName}
+                                onChange={(e) => setFullName(e.target.value)}
+                                required
+                            />
+                            <input 
+                                type="text" 
+                                placeholder="Email Address" 
+                                className="p-4 bg-greyBg rounded-md w-full focus:outline-primary" 
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                            />
+                            <input 
+                                type="text" 
+                                placeholder="Phone Number (WhatsApp Num)" 
+                                className="p-4 bg-greyBg rounded-md w-full focus:outline-primary" 
+                                value={phoneNumber}
+                                onChange={(e) => setPhoneNumber(e.target.value)}
+                                required
+                            />
                             {/* <input type="select" placeholder="Phone No" className="p-4 bg-greyBg rounded-md w-full focus:outline-primary" /> */}
                             
-                            <select id="creditConsultMethod" className="p-4 bg-greyBg rounded-md w-full focus:outline-primary" >
+                            <select required id="" className="p-4 bg-greyBg rounded-md w-full focus:outline-primary" value={selectedBudget} onChange={(e) => setSelectedBudget(e.target.value)}>
                                 <option value="">Choose your budget</option>
-                                <option value="">Item 1</option>
-                                <option value="">Item 2</option>
+                                <option value="budget 1">Budget 1</option>
+                                <option value="budget 2">Budget 2</option>
                             </select>
                            
 
@@ -121,8 +191,18 @@ const ContactUs = () => {
                         </div>
                         
                         <div className="w-full md:w-1/2 flex__column gap-4 md:gap-2">
-                            <textarea name="" id="" cols={30} rows={8} placeholder='Your message' className="resize-none bg-greyBg w-full p-4 focus:outline-primary" />
-                            <CustomButton cls=" w-full py-1 btnL bg-[#276AD9] text-white">send message now</CustomButton>
+                            <textarea 
+                                name="" 
+                                id="" 
+                                cols={30} 
+                                rows={8} 
+                                placeholder='Your message' 
+                                className="resize-none bg-greyBg w-full p-4 focus:outline-primary" 
+                                value={message}
+                                onChange={(e) => setMessage(e.target.value)}
+                                required
+                            />
+                            <CustomButton type="submit" cls=" w-full py-1 btnL bg-[#276AD9] text-white">{loading ? "Sending message..." : "Send message now"}</CustomButton>
                         </div>
 
                     </div>

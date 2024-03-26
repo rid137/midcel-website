@@ -1,4 +1,6 @@
+import { format } from "date-fns";
 import React, { useEffect, useState } from "react";
+import { DateTime } from 'luxon';
 
 type TimeAgoProps = {
   timestamp: string;
@@ -101,14 +103,34 @@ export const generateRandomNumber = (): number =>  {
 }
 
 
-// export const getDateTime = (apiDate: string | Date): string => {
-//   // const apiDate = '2023-10-27T13:26';
-//   const date = new Date(apiDate);
+export const getDateTime = (apiDate: string | Date): string => {
+  // const apiDate = '2023-10-27T13:26';
+  const date = new Date(apiDate);
 
-//   const formattedDate = format(date, 'EEE MMM dd yyyy HH:mm:ss');
+  const formattedDate = format(date, 'EEE MMM dd yyyy HH:mm:ss');
 
-//   return formattedDate; 
+  return formattedDate; 
+}
+
+// export const generateDateTime = (timestamp: string): string => {
+//   return DateTime.fromISO(timestamp as string).toLocaleString(DateTime.DATE_MED)
 // }
+
+
+export const generateDateTime = (timestamp: string): string => {
+  const dateTime = DateTime.fromISO(timestamp as string);
+  
+  // Format both date and time
+  const formattedDateTime = dateTime.toLocaleString({
+    ...DateTime.DATE_MED,
+    ...DateTime.TIME_SIMPLE
+  });
+
+  return formattedDateTime;
+}
+
+
+
 
 export const capitalize = (str: string): string => {
   return str[0].toUpperCase() + str.slice(1).toLowerCase()

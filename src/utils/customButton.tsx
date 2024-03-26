@@ -15,7 +15,7 @@ const CustomButton: React.FC<CustomButtonTypes> = ({
   cls=''
 }) => {
   return (
-    <button type={type} className={`${cls} block text-center pointer rounded-md text-xs font-inter hover:scale-95 transition-all`} onClick={onClick}>
+    <button type={type} className={`${cls} block text-center pointer rounded-md text-x font-inter hover:scale-95 transition-all`} onClick={onClick}>
       {children}
     </button>
   );

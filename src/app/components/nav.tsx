@@ -4,7 +4,7 @@ import Link from "next/link"
 import { Links } from "./links"
 import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
-import CustomButton from "@/utils/customButton"
+// import CustomButton from "@/utils/customButton"
 import Logo from "./logo"
 import { IoMdClose, IoMdMenu } from "react-icons/io"
 
@@ -64,7 +64,7 @@ const Navbar = ({isNavOpen, setIsNavOpen}: NavbarProp) => {
                     }
 
                     {/* <CustomButton cls="bg-primary text-white btnMd">Let’s get started</CustomButton> */}
-                    <Link href="/contact_us"><CustomButton cls="bg-primary text-white btnMd">Let’s get started</CustomButton></Link>
+                    <Link href="/contact_us"><p className="bg-primary text-white btnMd flex__center">Let’s get started</p></Link>
 
                 </ul>
 
@@ -94,7 +94,8 @@ const Navbar = ({isNavOpen, setIsNavOpen}: NavbarProp) => {
                     ))
                 }
 
-                <Link onClick={handleMobileNavItemClick} href="/contact_us"><CustomButton cls="bg-primary text-white btnMd">Let’s get started</CustomButton></Link>
+                {/* <Link onClick={handleMobileNavItemClick} href="/contact_us"><CustomButton cls="bg-primary text-white btnMd">Let’s get started</CustomButton></Link> */}
+                <Link onClick={handleMobileNavItemClick} href="/contact_us"><p className="bg-primary text-white btnMd flex__center">Let’s get started</p></Link>
 
             </div>
         </div>
