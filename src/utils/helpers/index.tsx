@@ -6,6 +6,10 @@ type TimeAgoProps = {
   timestamp: string;
 };
 
+export const trimWords = (words: string): string => {
+  return words.trim()
+}
+
 
 export const clipSentence = (str: string, wordAmout: number, fromFront?: boolean): string => {
     if(str.length > wordAmout) {

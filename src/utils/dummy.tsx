@@ -5,19 +5,20 @@ export const offerData = [
         id: 1,
         img: "/icons/offerIcon1.png",
         title: "Enterprise Softwares",
-        body: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
+        // body: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
+        body: "Enterprise software streamlines complex business processes with precision. It offers comprehensive solutions for organizational efficiency. Prioritizing scalability, security, and integration, these platforms facilitate seamless collaboration across departments."
     },
     {
         id: 2,
         img: "/icons/offerIcon2.png",
         title: "Managed IT Services",
-        body: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
+        body: "Provision of comprehensive solutions for businesses seeking expert management of their IT infrastructure. From network monitoring to cybersecurity, we offer proactive support and maintenance to optimize system performance and ensure data security."
     },
     {
         id: 3,
         img: "/icons/offerIcon3.png",
         title: "Mobile Applications",
-        body: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
+        body: "We go beyond traditional offerings by providing comprehensive solutions that extend to mobile application development. Our platform empowers businesses not only to leverage cloud-based software solutions but also to expand their reach and capabilities through custom mobile applications."
     },
 ]
 
@@ -47,6 +48,21 @@ export const previousWorkData = [
         img: "/images/prevWork6.png"
     }
 ]
+
+// {
+//     "_id": "65f4f86df519cd97f1e7b342",
+//     "title": "Testing 400 Updated",
+//     "body": "ndshdhgdhvbdvhdsf",
+//     "tags": [
+//         "info"
+//     ],
+//     "image": "",
+//     "author_name": "Olayinka Craine",
+//     "createdAt": "2024-03-16T01:39:57.693Z",
+//     "updatedAt": "2024-03-18T10:39:57.800Z",
+//     "__v": 0,
+//     "updated_at": "2024-03-16T02:09:28.376Z"
+// }
 
 
 export const latestBlogData: BlogDataType[] = [

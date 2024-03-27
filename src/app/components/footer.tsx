@@ -3,6 +3,7 @@ import { renderSocials } from '@/utils/dummy'
 import React from 'react'
 import Logo from './logo'
 import Link from 'next/link'
+import { trimWords } from '@/utils/helpers'
 
 const Footer = () => {
   return (
@@ -39,8 +40,9 @@ const Footer = () => {
                     {/* FIRST COLUMN */}
                     <div className="">
                         <Logo />
-                        <p className="border-t border-[#ccc] mt-4 pt-4 text-justify text-[.9rem]">
-                            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
+                        <p className="border-t border-[#ccc] mt-4 pt-4 text-justify text-[.9rem] ">
+                            {/* Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. */}
+                            {trimWords("We are a digital transformation consultancy and software development company that provides cutting edge engineering solutions.")}
                         </p>
                     </div>
 

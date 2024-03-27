@@ -191,6 +191,14 @@ body, html {
   height: 112px;
 }
 
+/* Hide overflow content and display ellipsis (...) for trimmed text */
+.truncate {
+  overflow: hidden;
+  white-space: nowrap; /* Prevent text from wrapping */
+  text-overflow: ellipsis; /* Display ellipsis (...) for trimmed text */
+}
+
+
 .box1,
 .box2,
 .box3 {
